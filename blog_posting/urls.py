@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Home.as_view(), name='home'),
     path('bcreate/', views.BlogCreate.as_view(), name='bcreate'),
-    path('bdetail/<id>/', views.BlogDetail.as_view(), name='bdetail')
+    path('bdetail/<id>/', views.BlogDetail.as_view(), name='bdetail'),
+    path('ccreate/', views.CommentCreate.as_view(), name='ccreate'),
 ]

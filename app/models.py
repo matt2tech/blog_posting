@@ -19,4 +19,5 @@ class Comments(models.Model):
     rating = models.IntegerField()
     blog_post = models.ForeignKey(BlogPost, on_delete=models.PROTECT)
 
-    # def __str
+    def __str__(self):
+        return self.name

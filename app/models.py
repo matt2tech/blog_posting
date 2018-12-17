@@ -24,4 +24,4 @@ class Comments(models.Model):
     blog_post = models.ForeignKey(BlogPost, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.name
+        return self.title

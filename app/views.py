@@ -24,3 +24,7 @@ class BlogCreate(View):
             return redirect('home')
         else:
             return render(request, 'blog_create.html', {'form': form})
+
+class BlogDetail(View):
+    def get(self, request, id):
+        return render(request, 'blog_detail.html', {'blog': models.BlogPost.objects.get(id=id)})

@@ -6,7 +6,10 @@ class BlogPost(models.Model):
     body = models.TextField()
     author = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    cover_image_url = models.TextField()
+    cover_image_url = models.URLField()
+
+    def __str__(self):
+        return f'{self.title} by {self.author}'
 
 class Comments(models.Model):
     title = models.TextField()
@@ -14,4 +17,6 @@ class Comments(models.Model):
     author = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField()
-    blog_post = models.ForeignKey(BlogPost)
+    blog_post = models.ForeignKey(BlogPost, on_delete=models.PROTECT)
+
+    # def __str

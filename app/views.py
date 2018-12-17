@@ -12,3 +12,15 @@ class Home(View):
 class BlogCreate(View):
     def get(self, request):
         return render(request, 'blog_create.html', {'form': forms.BCreateForm()})
+
+    def post(self, request):
+        form = forms.BCreateForm(data=request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            author = form.cleaned_data['author']
+            body = form.cleaned_data['body']
+            cover_image = form.cleaned_data['cover_image']
+            models.BlogPost.submitted(title, body, author, cover_image)
+            return redirect('home')
+        else:
+            return render(request, 'blog_create.html', {'form': form})

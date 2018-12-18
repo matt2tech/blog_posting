@@ -1,10 +1,29 @@
 {% extends 'base.html' %} {% block body %}
 
-<div>
-    <h3>{{ blog.title }}</h3>
-    <h4>Author: {{ blog.author }}</h4>
-    <h5>{{ blog.date }}</h5>
-    <img class="{{ blog.cover_image }}"
+<div class='center'>
+    <h2>{{ blog.title }}</h2>
+    <h3>Author: {{ blog.author }}</h3>
+    <h4>{{ blog.date }}</h4>
+    <img src="{{ blog.cover_image_url }}"/>
+    <p class='border'>{{ blog.body }}</p>
 </div>
+<hr/>
+<div>
+    <a href="{% url 'ccreate' blog.id %}"><button>Leave A Comment!</button></a>
+    <div class='center'>
+    {% for comment in comments %}
+    <p>{{ comment.title }}</p>
+    {% endfor %}
+    </div>
+</div>
+
+<style>
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+
+</style>
 
 {% endblock body %}

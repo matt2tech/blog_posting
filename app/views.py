@@ -39,16 +39,19 @@ class BlogDetail(View):
             })
 
 
-class CommentCreate(View):
-    def get(self, request, id):
-        return render(request, 'comment_create.html',
-                      {'form': forms.CCreateForm()})
+# class CommentCreate(View):
+#     def get(self, request, id):
+#         return render(request, 'comment_create.html',
+#                       {'form': forms.CCreateForm(), 'blog': models.BlogPost.objects.get(id=id)})
 
-    def post(self, request):
-        form = forms.CCreateForm(data=request.POST)
-        if form.is_valid():
-            title = form.cleaned_data['title']
-            author = form.cleaned_data['author']
-            body = form.cleaned_data['body']
-            rating = form.cleaned_data['rating']
-            models.Comments.submitted(title, body, author, rating, blog_id)
+#     def post(self, request):
+#         form = forms.CCreateForm(data=request.POST)
+#         if form.is_valid():
+#             title = form.cleaned_data['title']
+#             author = form.cleaned_data['author']
+#             body = form.cleaned_data['body']
+#             rating = form.cleaned_data['rating']
+#             models.Comments.submitted(title, body, author, rating)
+#             return redirect('bdetail/{}'.format(id))
+#         else:
+#             return render(request, 'comment_create.html', {'form': form})
